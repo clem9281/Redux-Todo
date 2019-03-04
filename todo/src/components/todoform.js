@@ -20,6 +20,7 @@ class TodoForm extends React.Component {
   submitHandler = (e, task) => {
     e.preventDefault();
     this.props.addTodo(task);
+    this.setState({ inputText: "" });
   };
   render() {
     console.log("form props: ", this.props);

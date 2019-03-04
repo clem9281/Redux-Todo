@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actions";
+import { ADD_TODO, MARK_COMPLETED } from "../actions";
 
 const initialState = {
   todos: [
@@ -20,6 +20,17 @@ export const reducer = (state = initialState, action) => {
             isCompleted: false
           }
         ]
+      };
+    case MARK_COMPLETED:
+      return {
+        todos: state.todos.map(element => {
+          console.log(element.task === action.payload.task);
+          if (element.task === action.payload.task) {
+            return { task: element.task, isCompleted: !element.isCompleted };
+          } else {
+            return element;
+          }
+        })
       };
     default:
       return state;

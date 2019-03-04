@@ -12,3 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
+.todo {
+  cursor: pointer;
+}
+.crossed-out {
+  text-decoration: line-through;
+}

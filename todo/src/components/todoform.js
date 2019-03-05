@@ -4,6 +4,17 @@ import { connect } from "react-redux";
 
 import { addTodo } from "../actions";
 
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  button: {
+    display: "block",
+    margin: "10px auto"
+  }
+};
+
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,13 +37,22 @@ class TodoForm extends React.Component {
     console.log("form props: ", this.props);
     return (
       <form onSubmit={e => this.submitHandler(e, this.state.inputText)}>
-        <input
-          type="text"
+        <TextField
+          id="newTodo"
+          label="New Todo Item"
           value={this.state.inputText}
           name="inputText"
           onChange={this.changeHandler}
+          fullWidth
         />
-        <button>Add</button>
+        <Button
+          variant="contained"
+          color="primary"
+          className={this.props.classes.button}
+          type="submit"
+        >
+          Add
+        </Button>
       </form>
     );
   }
@@ -44,7 +64,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { addTodo }
-)(TodoForm);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { addTodo }
+  )(TodoForm)
+);

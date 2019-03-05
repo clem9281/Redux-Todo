@@ -2,27 +2,38 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import { addTodo } from "../actions";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
+import Todo from "./Todo";
 
-import Todo from "./todo";
+const styles = theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  }
+});
 
 const TodoList = props => {
-  console.log(props);
+  console.log("todo props: ", props);
   return (
     <div>
-      <ul>
+      <List className={props.classes.root}>
         {props.todos.map(todo => (
           <Todo todo={todo} key={todo.task} />
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
 
 const mapStateToProps = state => {
+  console.log("todo state: ", state);
   return {
     todos: state.todos
   };
 };
 
-export default connect(mapStateToProps)(TodoList);
+export default withStyles(styles)(connect(mapStateToProps)(TodoList));

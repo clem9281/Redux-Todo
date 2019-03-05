@@ -1,6 +1,5 @@
 import { ADD_TODO, MARK_COMPLETED, DELETE_ITEM } from "../actions";
-
-const initialState = {
+const initialListState = {
   todos: [
     {
       task: "A default task",
@@ -9,7 +8,7 @@ const initialState = {
   ]
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = initialListState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {

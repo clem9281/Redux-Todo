@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { markCompleted, deleteItem } from "../actions";
 
 import { withStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -27,7 +26,6 @@ const styles = theme => ({
 });
 
 const Todo = props => {
-  console.log("todo", props);
   return (
     <ListItem
       role={undefined}

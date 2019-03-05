@@ -1,13 +1,16 @@
 import React from "react";
 
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import AddIcon from "@material-ui/icons/Add";
+
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const styles = {
   root: {
@@ -27,15 +30,24 @@ function TodoNav(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             TodoList
           </Typography>
-          <Button color="inherit">idkyetsomethinghere</Button>
+        </Toolbar>
+        <Toolbar>
+          <Tabs
+            value={0}
+            indicatorColor="secondary"
+            textColor="inherit"
+            className={classes.grow}
+            onClick={() => props.history.push("/today")}
+          >
+            <Tab label="Today" />
+          </Tabs>
+          <Button color="inherit" component={Link} to="/add-item">
+            <AddIcon />
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-TodoNav.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(TodoNav);
+export default withRouter(withStyles(styles)(TodoNav));

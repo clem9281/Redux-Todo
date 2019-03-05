@@ -6,6 +6,7 @@ import { addTodo } from "../actions";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
@@ -32,11 +33,14 @@ class TodoForm extends React.Component {
     e.preventDefault();
     this.props.addTodo(task);
     this.setState({ inputText: "" });
+    this.props.history.push("/today");
   };
   render() {
-    console.log("form props: ", this.props);
     return (
       <form onSubmit={e => this.submitHandler(e, this.state.inputText)}>
+        <Typography variant="h6" align="center">
+          Add A Todo Item
+        </Typography>
         <TextField
           id="newTodo"
           label="New Todo Item"
@@ -50,6 +54,7 @@ class TodoForm extends React.Component {
           color="primary"
           className={this.props.classes.button}
           type="submit"
+          disabled={!this.state.inputText.length > 0}
         >
           Add
         </Button>

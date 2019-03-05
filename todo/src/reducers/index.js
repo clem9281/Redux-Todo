@@ -32,9 +32,9 @@ export const reducer = (state = initialListState, action) => {
       };
     case DELETE_ITEM:
       return {
-        todos: state.todos
-          .slice()
-          .filter(element => element.task !== action.payload.task)
+        todos: state.todos.filter(
+          element => element.task !== action.payload.task
+        )
       };
     default:
       return state;

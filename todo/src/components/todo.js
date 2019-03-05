@@ -52,7 +52,6 @@ const Todo = props => {
         <IconButton
           aria-label="Comments"
           onClick={() => {
-            console.log("click");
             props.deleteItem(props.todo);
           }}
         >

@@ -12,6 +12,7 @@ export const reducer = (state = initialListState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
+        ...state,
         todos: [
           ...state.todos,
           {
@@ -22,6 +23,7 @@ export const reducer = (state = initialListState, action) => {
       };
     case MARK_COMPLETED:
       return {
+        ...state,
         todos: state.todos.map(element => {
           if (element.task === action.payload.task) {
             return { task: element.task, isCompleted: !element.isCompleted };
@@ -32,6 +34,7 @@ export const reducer = (state = initialListState, action) => {
       };
     case DELETE_ITEM:
       return {
+        ...state,
         todos: state.todos.filter(
           element => element.task !== action.payload.task
         )
